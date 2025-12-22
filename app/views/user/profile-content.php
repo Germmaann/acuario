@@ -2,7 +2,7 @@
     <!-- Columna izquierda: Foto de perfil -->
     <div>
         <div class="card">
-            <h3 style="margin-bottom: 20px;">Foto de Perfil</h3>
+            <h3 style="margin-bottom: 20px;"><?php echo __('user.profile.photo'); ?></h3>
             
             <div style="text-align: center; margin-bottom: 20px;">
                 <?php if (!empty($user['avatar_path'])): ?>
@@ -19,18 +19,18 @@
             <!-- Formulario para subir foto -->
             <form method="POST" action="<?php echo APP_URL; ?>/user/upload-avatar" enctype="multipart/form-data">
                 <div style="margin-bottom: 15px;">
-                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Cambiar Foto:</label>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;"><?php echo __('user.profile.change_photo'); ?>:</label>
                     <input type="file" name="avatar" accept="image/*" required 
                            style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
-                    <small style="color: #666;">JPG, PNG o GIF. Máximo 2MB</small>
+                    <small style="color: #666;"><?php echo __('user.profile.photo_help'); ?></small>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Subir Foto</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;"><?php echo __('user.profile.upload_photo'); ?></button>
             </form>
 
             <?php if (!empty($user['avatar_path'])): ?>
                 <form method="POST" action="<?php echo APP_URL; ?>/user/remove-avatar" style="margin-top: 10px;">
                     <button type="submit" class="btn btn-secondary" style="width: 100%;" 
-                            onclick="return confirm('¿Eliminar foto de perfil?')">Eliminar Foto</button>
+                            onclick="return confirm('<?php echo __('user.profile.confirm_delete_photo'); ?>')"><?php echo __('user.profile.delete_photo'); ?></button>
                 </form>
             <?php endif; ?>
         </div>
@@ -39,57 +39,57 @@
     <!-- Columna derecha: Información del perfil -->
     <div>
         <div class="card">
-            <h3 style="margin-bottom: 20px;">Información del Perfil</h3>
+            <h3 style="margin-bottom: 20px;"><?php echo __('user.profile.info'); ?></h3>
 
             <div style="margin-bottom: 20px;">
-                <p><strong>Usuario:</strong> <?php echo htmlspecialchars($user['username']); ?></p>
-                <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
-                <p><strong>Nombre:</strong> <?php echo htmlspecialchars($user['full_name'] ?? 'No especificado'); ?></p>
-                <p><strong>Miembro desde:</strong> <?php echo date('d/m/Y', strtotime($user['created_at'])); ?></p>
+                <p><strong><?php echo __('user.profile.username'); ?>:</strong> <?php echo htmlspecialchars($user['username']); ?></p>
+                <p><strong><?php echo __('user.profile.email'); ?>:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
+                <p><strong><?php echo __('user.profile.full_name'); ?>:</strong> <?php echo htmlspecialchars($user['full_name'] ?? __('user.profile.not_set')); ?></p>
+                <p><strong><?php echo __('user.profile.member_since'); ?>:</strong> <?php echo date('d/m/Y', strtotime($user['created_at'])); ?></p>
             </div>
 
             <!-- Formulario para actualizar información -->
             <form method="POST" action="<?php echo APP_URL; ?>/user/update-profile">
                 <div style="margin-bottom: 15px;">
-                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Nombre Completo:</label>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;"><?php echo __('user.profile.full_name'); ?>:</label>
                     <input type="text" name="full_name" value="<?php echo htmlspecialchars($user['full_name'] ?? ''); ?>" 
                            style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
                 </div>
 
                 <div style="margin-bottom: 15px;">
-                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Biografía:</label>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 600;"><?php echo __('user.profile.bio'); ?>:</label>
                     <textarea name="bio" rows="4" 
                               style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"><?php echo htmlspecialchars($user['bio'] ?? ''); ?></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
+                <button type="submit" class="btn btn-primary"><?php echo __('user.profile.update'); ?></button>
             </form>
         </div>
 
         <!-- Estadísticas -->
         <div class="card" style="margin-top: 20px;">
-            <h3 style="margin-bottom: 15px;">Mis Estadísticas</h3>
+            <h3 style="margin-bottom: 15px;"><?php echo __('user.profile.my_stats'); ?></h3>
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center;">
                 <div style="padding: 15px; background: #f9f9f9; border-radius: 5px;">
                     <div style="font-size: 28px; font-weight: bold; color: #667eea;"><?php echo $stats['aquariums'] ?? 0; ?></div>
-                    <div style="color: #666;">Acuarios</div>
+                    <div style="color: #666;"><?php echo __('user.profile.stats.aquariums'); ?></div>
                 </div>
                 <div style="padding: 15px; background: #f9f9f9; border-radius: 5px;">
                     <div style="font-size: 28px; font-weight: bold; color: #667eea;"><?php echo $stats['fish_contributed'] ?? 0; ?></div>
-                    <div style="color: #666;">Peces Contribuidos</div>
+                    <div style="color: #666;"><?php echo __('user.profile.stats.fish_contributed'); ?></div>
                 </div>
                 <div style="padding: 15px; background: #f9f9f9; border-radius: 5px;">
                     <div style="font-size: 28px; font-weight: bold; color: #667eea;"><?php echo $stats['total_fish'] ?? 0; ?></div>
-                    <div style="color: #666;">Peces Totales</div>
+                    <div style="color: #666;"><?php echo __('user.profile.stats.total_fish'); ?></div>
                 </div>
             </div>
 
             <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                 <a href="<?php echo APP_URL; ?>/user/public-profile?id=<?php echo Session::getUserId(); ?>" class="btn btn-primary" style="text-align: center; display: block;">
-                    🔗 Ver Perfil Público
+                    🔗 <?php echo __('user.profile.view_public'); ?>
                 </a>
                 <a href="<?php echo APP_URL; ?>/user/change-password" class="btn btn-warning" style="text-align: center; display: block;">
-                    🔐 Cambiar Contraseña
+                    🔐 <?php echo __('user.change_password'); ?>
                 </a>
             </div>
         </div>

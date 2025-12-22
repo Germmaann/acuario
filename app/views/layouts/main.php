@@ -481,8 +481,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <h4><i class="fas fa-fish"></i> ACUARISMO</h4>
-                    <p>Sistema colaborativo de gestión de acuarios y wiki de peces. Comparte tus experiencias y aprende de la comunidad.</p>
+                    <h4><i class="fas fa-fish"></i> <?php echo __('footer.about.title'); ?></h4>
+                    <p><?php echo __('footer.about.text'); ?></p>
                     <div class="social-links mt-3">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -492,34 +492,34 @@
                 </div>
                 
                 <div class="col-lg-2 col-md-6 mb-4">
-                    <h4>Enlaces</h4>
+                    <h4><?php echo __('footer.links.title'); ?></h4>
                     <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 10px;"><a href="<?php echo APP_URL; ?>/fish"><i class="fas fa-angle-right"></i> Wiki de Peces</a></li>
-                        <li style="margin-bottom: 10px;"><a href="<?php echo APP_URL; ?>/aquarium"><i class="fas fa-angle-right"></i> Mis Acuarios</a></li>
-                        <li style="margin-bottom: 10px;"><a href="<?php echo APP_URL; ?>/user/profile"><i class="fas fa-angle-right"></i> Mi Perfil</a></li>
+                        <li style="margin-bottom: 10px;"><a href="<?php echo APP_URL; ?>/fish"><i class="fas fa-angle-right"></i> <?php echo __('footer.links.wiki'); ?></a></li>
+                        <li style="margin-bottom: 10px;"><a href="<?php echo APP_URL; ?>/aquarium"><i class="fas fa-angle-right"></i> <?php echo __('footer.links.aquarium'); ?></a></li>
+                        <li style="margin-bottom: 10px;"><a href="<?php echo APP_URL; ?>/user/profile"><i class="fas fa-angle-right"></i> <?php echo __('footer.links.profile'); ?></a></li>
                     </ul>
                 </div>
                 
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <h4>Servicios</h4>
+                    <h4><?php echo __('footer.services.title'); ?></h4>
                     <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 10px;"><a href="#"><i class="fas fa-angle-right"></i> Crear Acuario</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#"><i class="fas fa-angle-right"></i> Agregar Pez</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#"><i class="fas fa-angle-right"></i> Reportar Error</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#"><i class="fas fa-angle-right"></i> <?php echo __('footer.services.create_aquarium'); ?></a></li>
+                        <li style="margin-bottom: 10px;"><a href="#"><i class="fas fa-angle-right"></i> <?php echo __('footer.services.add_fish'); ?></a></li>
+                        <li style="margin-bottom: 10px;"><a href="#"><i class="fas fa-angle-right"></i> <?php echo __('footer.services.report_error'); ?></a></li>
                     </ul>
                 </div>
                 
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <h4>Contacto</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> Ciudad, País</p>
-                    <p><i class="fas fa-phone"></i> +123 456 7890</p>
-                    <p><i class="fas fa-envelope"></i> info@acuarismo.com</p>
+                    <h4><?php echo __('footer.contact.title'); ?></h4>
+                    <p><i class="fas fa-map-marker-alt"></i> <?php echo __('footer.contact.city'); ?></p>
+                    <p><i class="fas fa-phone"></i> <?php echo __('footer.contact.phone'); ?></p>
+                    <p><i class="fas fa-envelope"></i> <?php echo __('footer.contact.email'); ?></p>
                 </div>
             </div>
             
             <div class="row mt-4 pt-4" style="border-top: 1px solid rgba(255,255,255,0.1);">
                 <div class="col-12 text-center">
-                    <p>&copy; <?php echo date('Y'); ?> <strong>ACUARISMO</strong>. Todos los derechos reservados.</p>
+                    <p><?php echo __('footer.copyright', ['year' => date('Y')]); ?></p>
                 </div>
             </div>
         </div>

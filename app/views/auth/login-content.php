@@ -2,8 +2,8 @@
     <div class="col-lg-5 col-md-7">
         <div class="card shadow-lg border-0" style="border-radius: 15px; overflow: hidden;">
             <div class="card-header text-white text-center py-4" style="background: linear-gradient(135deg, #148f77 0%, #16a085 100%); border: none;">
-                <h2 class="mb-0" style="font-weight: 700; font-size: 28px;">🐠 Bienvenido</h2>
-                <p class="mb-0" style="opacity: 0.9; font-size: 14px;">Ingresa a tu cuenta de Acuarismo</p>
+                <h2 class="mb-0" style="font-weight: 700; font-size: 28px;">🐠 <?php echo __('auth.login.title'); ?></h2>
+                <p class="mb-0" style="opacity: 0.9; font-size: 14px;"><?php echo __('auth.login.subtitle', ['app' => 'Acuarismo']); ?></p>
             </div>
             <div class="card-body p-5">
                 <form method="POST" action="<?php echo APP_URL; ?>/auth/login">
@@ -11,7 +11,7 @@
 
                     <div class="form-group">
                         <label for="email" style="font-weight: 600; color: #333; margin-bottom: 8px;">
-                            <i style="color: #148f77;">📧</i> Email
+                            <i style="color: #148f77;">📧</i> <?php echo __('auth.email'); ?>
                         </label>
                         <input type="email" 
                                id="email" 
@@ -24,7 +24,7 @@
 
                     <div class="form-group">
                         <label for="password" style="font-weight: 600; color: #333; margin-bottom: 8px;">
-                            <i style="color: #148f77;">🔒</i> Contraseña
+                            <i style="color: #148f77;">🔒</i> <?php echo __('auth.password'); ?>
                         </label>
                         <input type="password" 
                                id="password" 
@@ -46,7 +46,7 @@
                                    transition: all 0.3s;"
                             onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(20, 143, 119, 0.6)';"
                             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(20, 143, 119, 0.4)';">
-                        Iniciar Sesión
+                        <?php echo __('nav.login'); ?>
                     </button>
                 </form>
 
@@ -54,12 +54,12 @@
 
                 <div class="text-center">
                     <p class="mb-2" style="color: #666;">
-                        ¿No tienes cuenta? 
+                        <?php echo __('auth.no_account'); ?> 
                         <a href="<?php echo APP_URL; ?>/auth/register" 
                            style="color: #148f77; font-weight: 600; text-decoration: none;"
                            onmouseover="this.style.color='#16a085'"
                            onmouseout="this.style.color='#148f77'">
-                            Regístrate aquí
+                            <?php echo __('auth.register_here'); ?>
                         </a>
                     </p>
                     <p class="mb-0">
@@ -67,7 +67,7 @@
                            style="color: #999; font-size: 14px; text-decoration: none;"
                            onmouseover="this.style.color='#148f77'"
                            onmouseout="this.style.color='#999'">
-                            ¿Olvidaste tu contraseña?
+                            <?php echo __('auth.forgot_link'); ?>
                         </a>
                     </p>
                 </div>
@@ -75,7 +75,7 @@
         </div>
         
         <div class="text-center mt-4" style="color: #999; font-size: 13px;">
-            <p>🔒 Tus datos están protegidos y seguros</p>
+            <p>🔒 <?php echo __('auth.security_note'); ?></p>
         </div>
     </div>
 </div>
