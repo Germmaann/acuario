@@ -19,6 +19,10 @@ require_once BASE_PATH . '/app/lib/Session.php';
 require_once BASE_PATH . '/app/lib/Security.php';
 require_once BASE_PATH . '/app/lib/Response.php';
 require_once BASE_PATH . '/app/lib/Router.php';
+require_once BASE_PATH . '/app/lib/I18n.php';
+
+// Inicializar internacionalización
+I18n::init();
 
 // Cargar modelos
 require_once BASE_PATH . '/app/models/User.php';

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="<?php echo I18n::getLang(); ?>">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -342,101 +342,108 @@
                     <ul class="navbar-nav ml-auto align-items-center">
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo APP_URL; ?>/fish">
-                                <i class="fas fa-fish"></i> Wiki de Peces
+                                <i class="fas fa-fish"></i> <?php echo __('nav.fish'); ?>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo APP_URL; ?>/articles">
-                                <i class="fas fa-book"></i> Artículos
+                                <i class="fas fa-book"></i> <?php echo __('nav.articles'); ?>
                             </a>
                         </li>
                         <?php if (Session::isLogged()): ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="aquariumDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-water"></i> Mis Acuarios
+                                <i class="fas fa-water"></i> <?php echo __('nav.aquariums.mine'); ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="aquariumDropdown" style="border-radius: 8px; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                                 <a class="dropdown-item" href="<?php echo APP_URL; ?>/aquarium">
-                                    <i class="fas fa-list" style="color: #16a085;"></i> Ver Todos
+                                    <i class="fas fa-list" style="color: #16a085;"></i> <?php echo __('nav.see_all'); ?>
                                 </a>
                                 <a class="dropdown-item" href="<?php echo APP_URL; ?>/aquarium/dashboard">
-                                    <i class="fas fa-chart-line" style="color: #3498db;"></i> Dashboard
+                                    <i class="fas fa-chart-line" style="color: #3498db;"></i> <?php echo __('nav.dashboard'); ?>
                                 </a>
                                 <a class="dropdown-item" href="<?php echo APP_URL; ?>/aquarium/search">
-                                    <i class="fas fa-search" style="color: #f39c12;"></i> Buscar
+                                    <i class="fas fa-search" style="color: #f39c12;"></i> <?php echo __('nav.search'); ?>
                                 </a>
                                 <a class="dropdown-item" href="<?php echo APP_URL; ?>/aquarium/gallery">
-                                    <i class="fas fa-images" style="color: #9b59b6;"></i> Galería Pública
+                                    <i class="fas fa-images" style="color: #9b59b6;"></i> <?php echo __('nav.gallery_public'); ?>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="<?php echo APP_URL; ?>/aquarium/create">
-                                    <i class="fas fa-plus-circle" style="color: #27ae60;"></i> Crear Nuevo
+                                    <i class="fas fa-plus-circle" style="color: #27ae60;"></i> <?php echo __('nav.create_new'); ?>
                                 </a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="terrariumDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-leaf"></i> Mis Terrarios
+                                <i class="fas fa-leaf"></i> <?php echo __('nav.terrariums.mine'); ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="terrariumDropdown" style="border-radius: 8px; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                                 <a class="dropdown-item" href="<?php echo APP_URL; ?>/terrarium">
-                                    <i class="fas fa-list" style="color: #e67e22;"></i> Ver Todos
+                                    <i class="fas fa-list" style="color: #e67e22;"></i> <?php echo __('nav.see_all'); ?>
                                 </a>
                                 <a class="dropdown-item" href="<?php echo APP_URL; ?>/terrarium/dashboard">
-                                    <i class="fas fa-chart-line" style="color: #3498db;"></i> Dashboard
+                                    <i class="fas fa-chart-line" style="color: #3498db;"></i> <?php echo __('nav.dashboard'); ?>
                                 </a>
                                 <a class="dropdown-item" href="<?php echo APP_URL; ?>/terrarium/search">
-                                    <i class="fas fa-search" style="color: #f39c12;"></i> Buscar
+                                    <i class="fas fa-search" style="color: #f39c12;"></i> <?php echo __('nav.search'); ?>
                                 </a>
                                 <a class="dropdown-item" href="<?php echo APP_URL; ?>/terrarium/gallery">
-                                    <i class="fas fa-images" style="color: #9b59b6;"></i> Galería Pública
+                                    <i class="fas fa-images" style="color: #9b59b6;"></i> <?php echo __('nav.gallery_public'); ?>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="<?php echo APP_URL; ?>/terrarium/create">
-                                    <i class="fas fa-plus-circle" style="color: #27ae60;"></i> Crear Nuevo
+                                    <i class="fas fa-plus-circle" style="color: #27ae60;"></i> <?php echo __('nav.create_new'); ?>
                                 </a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-tools"></i> Herramientas
+                                <i class="fas fa-tools"></i> <?php echo __('nav.tools'); ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="toolsDropdown" style="border-radius: 8px; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                                 <a class="dropdown-item" href="<?php echo APP_URL; ?>/alerts">
-                                    <i class="fas fa-bell" style="color: #f39c12;"></i> Alertas
+                                    <i class="fas fa-bell" style="color: #f39c12;"></i> <?php echo __('nav.alerts'); ?>
                                 </a>
                                 <a class="dropdown-item" href="<?php echo APP_URL; ?>/reports">
-                                    <i class="fas fa-file-export" style="color: #3498db;"></i> Reportes
+                                    <i class="fas fa-file-export" style="color: #3498db;"></i> <?php echo __('nav.reports'); ?>
                                 </a>
                             </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo APP_URL; ?>/user/profile">
-                                <i class="fas fa-user"></i> Perfil
+                                <i class="fas fa-user"></i> <?php echo __('nav.profile'); ?>
                             </a>
                         </li>
                         <?php if (Session::isAdmin()): ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo APP_URL; ?>/admin">
-                                <i class="fas fa-cog"></i> Admin
+                                <i class="fas fa-cog"></i> <?php echo __('nav.admin'); ?>
                             </a>
                         </li>
                         <?php endif; ?>
                         <li class="nav-item">
                             <a href="<?php echo APP_URL; ?>/auth/logout" class="btn-getstarted">
-                                <i class="fas fa-sign-out-alt"></i> Salir
+                                <i class="fas fa-sign-out-alt"></i> <?php echo __('nav.logout'); ?>
                             </a>
                         </li>
                         <?php else: ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo APP_URL; ?>/auth/login">
-                                <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                                <i class="fas fa-sign-in-alt"></i> <?php echo __('nav.login'); ?>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?php echo APP_URL; ?>/auth/register" class="btn-getstarted">
-                                <i class="fas fa-user-plus"></i> Registrarse
+                                <i class="fas fa-user-plus"></i> <?php echo __('nav.register'); ?>
                             </a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link" style="opacity:.8">
+                                <a href="?l=es" style="margin-right:6px;<?php echo I18n::getLang()==='es' ? 'font-weight:700;color:#148f77!important;' : '' ?>">ES</a>
+                                |
+                                <a href="?l=en" style="margin-left:6px;<?php echo I18n::getLang()==='en' ? 'font-weight:700;color:#148f77!important;' : '' ?>">EN</a>
+                            </span>
                         </li>
                         <?php endif; ?>
                     </ul>
