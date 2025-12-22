@@ -324,11 +324,15 @@ class Aquarium {
      * Buscar acuarios por nombre con filtros
      */
     public function search($userId, $searchTerm, $type = '', $status = '') {
-        $query = "SELECT * FROM aquariums WHERE user_id = :user_id AND name LIKE :search";
+        $query = "SELECT * FROM aquariums WHERE user_id = :user_id";
         $params = [
-            ':user_id' => $userId,
-            ':search' => "%$searchTerm%"
+            ':user_id' => $userId
         ];
+
+        if (!empty($searchTerm)) {
+            $query .= " AND name LIKE :search";
+            $params[':search'] = "%$searchTerm%";
+        }
 
         if (!empty($type)) {
             $query .= " AND type = :type";

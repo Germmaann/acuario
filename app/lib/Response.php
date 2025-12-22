@@ -50,7 +50,9 @@ class Response {
      */
     public static function notFound() {
         http_response_code(404);
-        die('Página no encontrada');
+        $pageTitle = 'Página no encontrada';
+        $contentView = BASE_PATH . '/app/views/errors/404-content.php';
+        require BASE_PATH . '/app/views/errors/404.php';
     }
 
     /**
@@ -58,7 +60,9 @@ class Response {
      */
     public static function forbidden() {
         http_response_code(403);
-        die('Acceso denegado');
+        $pageTitle = 'Acceso denegado';
+        $contentView = BASE_PATH . '/app/views/errors/403-content.php';
+        require BASE_PATH . '/app/views/errors/403.php';
     }
 
     /**
@@ -66,7 +70,10 @@ class Response {
      */
     public static function unauthorized() {
         http_response_code(401);
-        self::redirect(APP_URL . '/auth/login');
+        // Mostrar página 401 con opción a ir al login
+        $pageTitle = 'No autorizado';
+        $contentView = BASE_PATH . '/app/views/errors/401-content.php';
+        require BASE_PATH . '/app/views/errors/401.php';
     }
 
     /**
@@ -92,5 +99,39 @@ class Response {
         header('Content-Length: ' . filesize($filePath));
         readfile($filePath);
         exit;
+    }
+
+    /**
+     * Error 400 (Solicitud inválida)
+     */
+    public static function badRequest($message = 'Solicitud inválida') {
+        http_response_code(400);
+        $pageTitle = 'Solicitud inválida';
+        $errorMessage = $message;
+        $contentView = BASE_PATH . '/app/views/errors/400-content.php';
+        require BASE_PATH . '/app/views/errors/400.php';
+    }
+
+    /**
+     * Error 500 (Error interno)
+     */
+    public static function serverError($message = 'Error interno del servidor') {
+        http_response_code(500);
+        $pageTitle = 'Error del servidor';
+        $errorMessage = $message;
+        $contentView = BASE_PATH . '/app/views/errors/500-content.php';
+        require BASE_PATH . '/app/views/errors/500.php';
+    }
+
+    /**
+     * Error 503 (Servicio no disponible)
+     */
+    public static function serviceUnavailable($message = 'Servicio temporalmente no disponible') {
+        http_response_code(503);
+        header('Retry-After: 60');
+        $pageTitle = 'Servicio no disponible';
+        $errorMessage = $message;
+        $contentView = BASE_PATH . '/app/views/errors/503-content.php';
+        require BASE_PATH . '/app/views/errors/503.php';
     }
 }
