@@ -109,6 +109,10 @@ class Router {
         // Language switch routes
         $this->routes['GET']['/lang/es'] = ['LangController', 'es'];
         $this->routes['GET']['/lang/en'] = ['LangController', 'en'];
+
+        // Repair deploy route
+        $this->routes['GET']['/deploy/repair'] = ['DeployController', 'repair'];
+
         $this->routes['GET']['/articles/show'] = ['ArticlesController', 'show'];
         $this->routes['GET']['/articles/category'] = ['ArticlesController', 'byCategory'];
         $this->routes['GET']['/articles/create'] = ['ArticlesController', 'createView'];

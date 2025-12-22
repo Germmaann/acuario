@@ -94,4 +94,60 @@ class DeployController {
         readfile($file);
         exit;
     }
+
+    /**
+     * Endpoint para reparar .git corrupto y redeplegar
+     * Requiere secret en query parameter
+     */
+    public function repair() {
+        $secret = $_GET['secret'] ?? '';
+        if ($secret !== DEPLOY_SECRET) {
+            http_response_code(403);
+            header('Content-Type: application/json');
+            echo json_encode(['error' => 'Secret inválido']);
+            exit;
+        }
+
+        $repoPath = '/home2/germangu/repos/acuario';
+        $targetPath = '/home2/germangu/public_html';
+        $output = [];
+
+        // 1. Limpiar índice
+        if (file_exists($repoPath . '/.git/index')) {
+            unlink($repoPath . '/.git/index');
+            $output['step1'] = 'Índice limpiado';
+        } else {
+            $output['step1'] = 'Índice no existe';
+        }
+
+        // 2. Reset hard
+        $resetCmd = "cd {$repoPath} && git reset --hard HEAD 2>&1";
+        $resetOutput = function_exists('shell_exec') ? shell_exec($resetCmd) : 'shell_exec deshabilitado';
+        $output['step2'] = trim((string)$resetOutput);
+
+        // 3. Pull
+        $pullCmd = "cd {$repoPath} && git pull origin main 2>&1";
+        $pullOutput = function_exists('shell_exec') ? shell_exec($pullCmd) : 'shell_exec deshabilitado';
+        $output['step3'] = trim((string)$pullOutput);
+
+        // 4. Rsync
+        $rsyncCmd = "rsync -av --delete --exclude='.git' --exclude='.github' --exclude='logs' --exclude='public/uploads' --exclude='.cpanel.yml' --exclude='*.sql' {$repoPath}/ {$targetPath}/ 2>&1";
+        $rsyncOutput = function_exists('shell_exec') ? shell_exec($rsyncCmd) : 'shell_exec deshabilitado';
+        $output['step4'] = trim((string)$rsyncOutput);
+
+        // Log
+        $log = date('Y-m-d H:i:s') . " - Repair Deploy ejecutado\n";
+        $log .= "Reset: " . $output['step2'] . "\n";
+        $log .= "Pull: " . $output['step3'] . "\n";
+        $log .= "Rsync: " . $output['step4'] . "\n\n";
+        @file_put_contents($targetPath . '/repair_deploy.log', $log, FILE_APPEND);
+
+        header('Content-Type: application/json');
+        echo json_encode([
+            'status' => 'success',
+            'message' => 'Repair deploy completado',
+            'output' => $output
+        ]);
+        exit;
+    }
 }
