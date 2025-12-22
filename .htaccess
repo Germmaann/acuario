@@ -4,6 +4,10 @@
     # Usar public/index.php como DirectoryIndex si aplica
     DirectoryIndex index.php index.html public/index.php
 
+    # Redirigir URL raíz explícitamente a public/index.php
+    RewriteCond %{REQUEST_URI} ^/?$
+    RewriteRule ^$ public/index.php [L]
+
     # Evitar bucles si ya estamos en /public
     RewriteCond %{REQUEST_URI} !^/public/
 
