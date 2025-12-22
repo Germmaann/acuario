@@ -1,0 +1,15 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home2/germangu/public_html/
+    # Sincroniza código preservando uploads y archivos sensibles
+    - /bin/rsync -av --delete \
+        --exclude='.git' \
+        --exclude='.github' \
+        --exclude='logs/*' \
+        --exclude='public/uploads/**' \
+        --exclude='public/uploads/*' \
+        --exclude='public/uploads' \
+        --exclude='*.sql' \
+        --exclude='*.sql.bak' \
+        ./ $DEPLOYPATH

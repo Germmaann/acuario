@@ -55,6 +55,15 @@ define('PASSWORD_ALGO', PASSWORD_BCRYPT);
 define('PASSWORD_OPTIONS', ['cost' => 10]);
 
 // =====================================================
+// WEBHOOK DEPLOY SECRET
+// =====================================================
+// Define un secreto para verificar la firma del Webhook de GitHub.
+// Puedes sobreescribirlo con la variable de entorno DEPLOY_SECRET.
+if (!defined('DEPLOY_SECRET')) {
+    define('DEPLOY_SECRET', getenv('DEPLOY_SECRET') ?: 'cambia_este_secreto');
+}
+
+// =====================================================
 // LÍMITES DE SUBIDA DE ARCHIVOS
 // =====================================================
 

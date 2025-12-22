@@ -100,6 +100,10 @@ class Router {
         // Home and Articles routes
         $this->routes['GET']['/'] = ['HomeController', 'index'];
         $this->routes['GET']['/articles'] = ['ArticlesController', 'index'];
+
+        // Deploy webhook routes
+        $this->routes['GET']['/webhook/deploy/test'] = ['DeployController', 'test'];
+        $this->routes['POST']['/webhook/deploy'] = ['DeployController', 'webhook'];
         $this->routes['GET']['/articles/show'] = ['ArticlesController', 'show'];
         $this->routes['GET']['/articles/category'] = ['ArticlesController', 'byCategory'];
         $this->routes['GET']['/articles/create'] = ['ArticlesController', 'createView'];

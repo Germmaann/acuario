@@ -2,7 +2,10 @@
 /**
  * Archivo principal de la aplicación
  * index.php - Punto de entrada
+ * hola prueba
  */
+
+
 
 // Cargar configuración
 require_once __DIR__ . '/../app/config/config.php';

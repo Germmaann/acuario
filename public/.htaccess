@@ -2,6 +2,11 @@
     RewriteEngine On
     RewriteBase /public/
     
+    # Permitir archivos específicos directamente
+    RewriteRule ^deploy\.php$ deploy.php [L]
+    RewriteRule ^debug_login\.php$ debug_login.php [L]
+    RewriteRule ^generate_hash\.php$ generate_hash.php [L]
+    
     # Permitir archivos y directorios reales
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
