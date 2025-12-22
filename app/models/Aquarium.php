@@ -352,7 +352,7 @@ class Aquarium {
      */
     public function getAllGalleries($limit = 20, $offset = 0) {
         $this->db->prepare("SELECT 
-            gi.*, 
+            ag.*, 
             a.id as aquarium_id,
             a.name as aquarium_name,
             a.type as aquarium_type,
