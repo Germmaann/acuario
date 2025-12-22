@@ -34,6 +34,9 @@ if (!$login) {
     die("ERROR: Credenciales FTP inválidas\n");
 }
 
+// Cambiar a modo activo (más confiable)
+ftp_pasv($ftp, false);
+
 echo "✓ Conectado a $ftp_host\n\n";
 
 // Cambiar a directorio remoto
