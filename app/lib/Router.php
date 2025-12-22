@@ -104,6 +104,7 @@ class Router {
         // Deploy webhook routes
         $this->routes['GET']['/webhook/deploy/test'] = ['DeployController', 'test'];
         $this->routes['POST']['/webhook/deploy'] = ['DeployController', 'webhook'];
+        $this->routes['GET']['/deploy/log'] = ['DeployController', 'log'];
         $this->routes['GET']['/articles/show'] = ['ArticlesController', 'show'];
         $this->routes['GET']['/articles/category'] = ['ArticlesController', 'byCategory'];
         $this->routes['GET']['/articles/create'] = ['ArticlesController', 'createView'];

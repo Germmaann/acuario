@@ -46,17 +46,52 @@ class DeployController {
             return;
         }
 
-        // Ejecutar git pull en el path del public_html.
-        // Nota: en algunos hostings shell_exec puede estar deshabilitado.
-        $cmd = 'cd /home2/germangu/public_html && git pull origin main 2>&1';
-        $output = function_exists('shell_exec') ? shell_exec($cmd) : 'shell_exec deshabilitado';
+        // Paths de repo y destino (ajusta si cambia en tu hosting)
+        $repoPath = '/home2/germangu/repos/acuario';
+        $targetPath = '/home2/germangu/public_html';
+
+        // 1) git pull en el repositorio clonado por cPanel
+        $pullCmd = "cd {$repoPath} && git pull origin main 2>&1";
+        $pullOutput = function_exists('shell_exec') ? shell_exec($pullCmd) : 'shell_exec deshabilitado';
+
+        // 2) rsync al destino, excluyendo uploads y archivos no deseados
+        $rsyncCmd = "rsync -av --delete --exclude='.git' --exclude='.github' --exclude='logs' --exclude='public/uploads' --exclude='.cpanel.yml' --exclude='*.sql' {$repoPath}/ {$targetPath}/ 2>&1";
+        $rsyncOutput = function_exists('shell_exec') ? shell_exec($rsyncCmd) : 'shell_exec deshabilitado';
 
         // Registrar log
         $log = date('Y-m-d H:i:s') . " - Deploy ejecutado\n";
-        $log .= "Output: " . trim((string)$output) . "\n\n";
-        @file_put_contents('/home2/germangu/public_html/deploy.log', $log, FILE_APPEND);
+        $log .= "git pull:\n" . trim((string)$pullOutput) . "\n\n";
+        $log .= "rsync:\n" . trim((string)$rsyncOutput) . "\n\n";
+        @file_put_contents($targetPath . '/deploy.log', $log, FILE_APPEND);
 
         header('Content-Type: application/json');
-        echo json_encode(['ok' => true, 'message' => 'Deploy completado', 'output' => $output]);
+        echo json_encode([
+            'ok' => true,
+            'message' => 'Deploy completado',
+            'pull' => $pullOutput,
+            'rsync' => $rsyncOutput
+        ]);
+    }
+
+    /**
+     * Mostrar el contenido de deploy.log vía PHP para evitar bloqueos del servidor a archivos .log
+     */
+    public function log() {
+        // Opcional: limitar a admins
+        if (class_exists('Session') && !Session::isAdmin()) {
+            Response::forbidden('Solo admin puede ver el log');
+            return;
+        }
+
+        $targetPath = '/home2/germangu/public_html';
+        $file = $targetPath . '/deploy.log';
+        if (!file_exists($file)) {
+            Response::notFound('No existe deploy.log');
+            return;
+        }
+
+        header('Content-Type: text/plain; charset=utf-8');
+        readfile($file);
+        exit;
     }
 }
