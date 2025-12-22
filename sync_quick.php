@@ -32,7 +32,9 @@ echo "✓ Conectado a $ftp_host\n\n";
 $filesToSync = [
     'app/models/Aquarium.php' => 'public_html/app/models/Aquarium.php',
     'app/controllers/AquariumController.php' => 'public_html/app/controllers/AquariumController.php',
+    'app/controllers/test_search_debug.php' => 'public_html/app/controllers/test_search_debug.php',
     'app/views/aquarium/search-content.php' => 'public_html/app/views/aquarium/search-content.php',
+    'public/diagnose_search.php' => 'public_html/public/diagnose_search.php',
     'sync_ftp.php' => 'public_html/sync_ftp.php',
 ];
 
