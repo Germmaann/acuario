@@ -105,6 +105,10 @@ class Router {
         $this->routes['GET']['/webhook/deploy/test'] = ['DeployController', 'test'];
         $this->routes['POST']['/webhook/deploy'] = ['DeployController', 'webhook'];
         $this->routes['GET']['/deploy/log'] = ['DeployController', 'log'];
+
+        // Language switch routes
+        $this->routes['GET']['/lang/es'] = ['LangController', 'es'];
+        $this->routes['GET']['/lang/en'] = ['LangController', 'en'];
         $this->routes['GET']['/articles/show'] = ['ArticlesController', 'show'];
         $this->routes['GET']['/articles/category'] = ['ArticlesController', 'byCategory'];
         $this->routes['GET']['/articles/create'] = ['ArticlesController', 'createView'];

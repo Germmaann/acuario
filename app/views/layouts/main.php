@@ -440,9 +440,9 @@
                         </li>
                         <li class="nav-item">
                             <span class="nav-link" style="opacity:.8">
-                                <a href="?l=es" style="margin-right:6px;<?php echo I18n::getLang()==='es' ? 'font-weight:700;color:#148f77!important;' : '' ?>">ES</a>
+                                <a href="<?php echo APP_URL; ?>/lang/es" style="margin-right:6px;<?php echo I18n::getLang()==='es' ? 'font-weight:700;color:#148f77!important;' : '' ?>">ES</a>
                                 |
-                                <a href="?l=en" style="margin-left:6px;<?php echo I18n::getLang()==='en' ? 'font-weight:700;color:#148f77!important;' : '' ?>">EN</a>
+                                <a href="<?php echo APP_URL; ?>/lang/en" style="margin-left:6px;<?php echo I18n::getLang()==='en' ? 'font-weight:700;color:#148f77!important;' : '' ?>">EN</a>
                             </span>
                         </li>
                         <?php endif; ?>
