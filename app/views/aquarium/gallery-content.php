@@ -94,11 +94,10 @@
                             </div>
                             <div style="display:flex; justify-content: space-between; align-items: center; margin-top: 12px;">
                                 <small style="color: #95a5a6; display: block;">
-                                    <i class="fas fa-calendar"></i> <?php echo date('d/m/Y', strtotime($photo['uploaded_at'])); ?>
+                                    <i class="fas fa-calendar"></i> <?php echo date('d/m/Y', strtotime($photo['created_at'] ?? now())); ?>
                                 </small>
                                 <a href="<?php echo APP_URL; ?>/aquarium/public-show?id=<?php echo (int)$photo['aquarium_id']; ?>" 
-                                   class="btn btn-sm" 
-                                   style="border-radius: 20px; padding: 8px 14px; background: linear-gradient(135deg, #148f77 0%, #16a085 100%); color: white; font-weight: 600; text-decoration: none;">
+                                   class="btn btn-sm"                                   style="border-radius: 20px; padding: 8px 14px; background: linear-gradient(135deg, #148f77 0%, #16a085 100%); color: white; font-weight: 600; text-decoration: none;">
                                    Ver Acuario
                                 </a>
                             </div>
