@@ -523,16 +523,10 @@ class AquariumController {
         $type = Security::sanitize($_GET['type'] ?? '');
         $status = Security::sanitize($_GET['status'] ?? '');
 
-        // DEBUG
-        error_log("SEARCH DEBUG: q='$searchTerm', type='$type', status='$status'");
-        error_log("SEARCH CONDITION: " . ((!empty($searchTerm) || !empty($type) || !empty($status)) ? 'search()' : 'getByUser()'));
-
         if (!empty($searchTerm) || !empty($type) || !empty($status)) {
             $aquariums = $this->aquariumModel->search($userId, $searchTerm, $type, $status);
-            error_log("SEARCH RESULT: " . count($aquariums) . " aquariums");
         } else {
             $aquariums = $this->aquariumModel->getByUser($userId);
-            error_log("GETBYUSER RESULT: " . count($aquariums) . " aquariums");
         }
 
         $pageTitle = 'Buscar Acuarios';
