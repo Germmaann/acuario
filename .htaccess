@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Usar public/index.php como DirectoryIndex si aplica
+    DirectoryIndex index.php index.html public/index.php
+
+    # Evitar bucles si ya estamos en /public
+    RewriteCond %{REQUEST_URI} !^/public/
+
+    # Si el archivo o directorio no existe en la raíz, enviar a /public
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
