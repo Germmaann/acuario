@@ -163,13 +163,13 @@ class Router {
         $path = $this->getCurrentPath();
 
         // Debug: descomentar para ver qué ruta se está solicitando
-        echo "Method: $method, Path: $path<br>";
-        echo "APP_URL: " . APP_URL . "<br>";
-        echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'] . "<br>";
-        echo "Rutas disponibles: <pre>";
-        print_r($this->routes[$method]);
-        echo "</pre>";
-        exit;
+        // echo "Method: $method, Path: $path<br>";
+        // echo "APP_URL: " . APP_URL . "<br>";
+        // echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'] . "<br>";
+        // echo "Rutas disponibles: <pre>";
+        // print_r($this->routes[$method]);
+        // echo "</pre>";
+        // exit;
 
 
         // Buscar ruta

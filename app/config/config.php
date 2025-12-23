@@ -28,7 +28,7 @@ define('DB_CHARSET', 'utf8mb4');
 
 define('APP_NAME', 'Sistema de Acuarismo');
 define('APP_VERSION', '1.0.0');
-define('APP_URL', 'https://acuarix.com/public');
+define('APP_URL', 'https://acuarix.com');
 define('BASE_PATH', dirname(dirname(dirname(__FILE__))));
 define('PUBLIC_PATH', BASE_PATH . '/public');
 define('UPLOADS_PATH', PUBLIC_PATH . '/uploads');
