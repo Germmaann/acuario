@@ -19,10 +19,16 @@ if (empty($requestUri) || $requestUri === '/') {
     $file = __DIR__ . '/public' . $requestUri;
 }
 
-// Si es un archivo existente (css, js, etc), servir directamente
+// Si es un archivo existente (css, js, imágenes), servir directamente.
+// Si es PHP, ejecutarlo en lugar de imprimir el código fuente.
 if (file_exists($file) && is_file($file)) {
-    // Determinar Content-Type
     $ext = pathinfo($file, PATHINFO_EXTENSION);
+
+    if ($ext === 'php') {
+        require $file;
+        exit;
+    }
+
     $types = [
         'css' => 'text/css',
         'js' => 'application/javascript',
@@ -32,11 +38,10 @@ if (file_exists($file) && is_file($file)) {
         'gif' => 'image/gif',
         'svg' => 'image/svg+xml',
         'woff' => 'font/woff',
-        'woff2' => 'font/woff2',
-        'php' => 'text/html'
+        'woff2' => 'font/woff2'
     ];
     
-    $contentType = $types[$ext] ?? 'text/plain';
+    $contentType = $types[$ext] ?? 'application/octet-stream';
     header('Content-Type: ' . $contentType);
     readfile($file);
     exit;
