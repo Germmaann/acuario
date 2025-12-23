@@ -136,10 +136,20 @@ class Router {
         // Remover /public/index.php si está presente
         $path = str_replace('/public/index.php', '', $path);
         $path = str_replace('/index.php', '', $path);
+        
+        // Remover /public/ del inicio si está presente
+        if (strpos($path, '/public/') === 0) {
+            $path = substr($path, 7); // Remover '/public'
+        }
+        
+        // Remover /public si es exactamente eso
+        if ($path === '/public') {
+            $path = '/';
+        }
 
         // Asegurar que empieza con /
-        if (empty($path)) {
-            $path = '/';
+        if (empty($path) || $path[0] !== '/') {
+            $path = '/' . $path;
         }
 
         return $path;
